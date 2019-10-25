@@ -12,7 +12,7 @@ twitter_key = {
 
 # Personal information, all accounts to which messages will be sent
 user_ids = {
-        'owner_twitter': os.getenv('@gvst_oliveira', 'Token Not found'), # Enter your twitter user_name. Ex: @Twitter
+        'owner_twitter': os.getenv('owner_twitter', 'Token Not found'), # Enter your twitter user_name. Ex: @Twitter
         'fb_email':os.getenv('fb_email', 'Token Not found'), # firebase email registered
         'fb_password':os.getenv('fb_password', 'Token Not found') # firebase password registered
         }

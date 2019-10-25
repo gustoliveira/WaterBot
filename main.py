@@ -3,16 +3,15 @@ import times
 import tweepy
 import message
 import datetime
-import authentication_h as auth
-# import authentication as auth # For testing purpose
+# import authentication_h as auth
+import authentication as auth # For testing purpose
 
 followers_list = auth.API.followers_ids("@BotDaAgua")
 
 now_time = datetime.datetime.now().astimezone(times.local_timezone)
-print(len(followers_list))
 
 while times.until(now_time):
-    auth.API.send_direct_message(auth.user_ids['owner_twitter'], "It's running on heroku")
+    auth.API.send_direct_message(auth.API.get_user(auth.user_ids['owner_twitter']).id, "It's running on heroku")
     dispatch_time = times.time_to_send()
     while True:
         now_time = datetime.datetime.now().astimezone(times.local_timezone)
