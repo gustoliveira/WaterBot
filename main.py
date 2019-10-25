@@ -3,7 +3,8 @@ import times
 import tweepy
 import message
 import datetime
-import authentication as auth
+import authentication_h as auth
+# import authentication as auth # For testing purpose
 
 followers_list = auth.API.followers_ids("@BotDaAgua")
 
