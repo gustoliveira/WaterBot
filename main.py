@@ -10,34 +10,44 @@ followers_list = auth.API.followers_ids("@BotDaAgua")
 
 now_time = datetime.datetime.now().astimezone(times.local_timezone)
 
+user = auth.API.get_user(auth.user_ids['owner_twitter']).id
+auth.API.send_direct_message(user, "It's running on heroku")
+print(user)
+
+# for i in range(len(followers_list)):
+#     user = auth.API.get_user(followers_list[i]).screen_name
+#     print(user, ': ', followers_list[i])
+
 first_time_flag = True
-while times.until(now_time):
+while True:
     if first_time_flag == True:
         user = auth.API.get_user(auth.user_ids['owner_twitter']).id
         auth.API.send_direct_message(user, "It's running on heroku")
         print("It's running on heroku")
         first_time_flag = False
 
+    try:
+        auth.API.get_user(auth.user_ids['owner_twitter']).id
+    except tweepy.TweepError as TwitterError:
+        error = json.loads(TwitterError.response.text)
+        error_code = 'Twitter error: ' + error['errors'][0]['code']
+        if int(error_code) == 226:
+            times.sleep1(60*30)
+
     dispatch_time = times.time_to_send()
     while True:
         now_time = datetime.datetime.now().astimezone(times.local_timezone)
-        j = 0
         if now_time >= dispatch_time and times.pause(now_time):
             for i in range(len(followers_list)):
                 try:
-                    user = auth.API.get_user(followers_list[i]).id
-                    auth.API.send_direct_message(user, message.message())
+                    # auth.API.send_direct_message(followers_list[i], message.message())
+                    print('Sent to: ', auth.API.get_user(followers_list[i]).screen_name, message.message())
                 except tweepy.TweepError as TwitterError:
                     error = json.loads(TwitterError.response.text)
                     error_msg = 'Twitter error: ' + error['errors'][0]['message']
                     auth.API.send_direct_message(auth.user_ids['owner_twitter'], error_msg)
-                j+=1
-
-            print("Sent for: ", j)
-            if j < len(followers_list):
-                auth.API.send_direct_message(auth.API.get_user(auth.user_ids['owner_twitter']).id, "Can't sent for all followers, pls check")
             break
         else:
             print(dispatch_time-now_time) # For testing purpose
-            times.sleep1(2)
+            times.sleep1(30)
 
