@@ -8,16 +8,6 @@ import authentication_h as auth
 
 followers_list = auth.API.followers_ids("@BotDaAgua")
 
-now_time = datetime.datetime.now().astimezone(times.local_timezone)
-
-user = auth.API.get_user(auth.user_ids['owner_twitter']).id
-auth.API.send_direct_message(user, "It's running on heroku")
-print(user)
-
-# for i in range(len(followers_list)):
-#     user = auth.API.get_user(followers_list[i]).screen_name
-#     print(user, ': ', followers_list[i])
-
 first_time_flag = True
 while True:
     if first_time_flag == True:
@@ -40,14 +30,14 @@ while True:
         if now_time >= dispatch_time and times.pause(now_time):
             for i in range(len(followers_list)):
                 try:
-                    # auth.API.send_direct_message(followers_list[i], message.message())
-                    print('Sent to: ', auth.API.get_user(followers_list[i]).screen_name, message.message())
+                    auth.API.send_direct_message(followers_list[i], message.message())
+                    # print('Sent to: ', auth.API.get_user(followers_list[i]).screen_name, message.message())
                 except tweepy.TweepError as TwitterError:
                     error = json.loads(TwitterError.response.text)
                     error_msg = 'Twitter error: ' + error['errors'][0]['message']
                     auth.API.send_direct_message(auth.user_ids['owner_twitter'], error_msg)
             break
         else:
-            print(dispatch_time-now_time) # For testing purpose
-            times.sleep1(30)
+            # print(dispatch_time-now_time) # For testing purpose
+            times.sleep1(60)
 
