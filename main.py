@@ -6,7 +6,6 @@ import datetime
 import authentication_h as auth
 # import authentication as auth # For testing purpose
 
-followers_list = auth.API.followers_ids("@BotDaAgua")
 
 first_time_flag = True
 while True:
@@ -28,6 +27,7 @@ while True:
     k = 0
     while True:
         now_time = datetime.datetime.now().astimezone(times.local_timezone)
+        followers_list = auth.API.followers_ids("@BotDaAgua")
         if now_time >= dispatch_time and times.pause(now_time):
             for i in range(len(followers_list)):
                 try:
