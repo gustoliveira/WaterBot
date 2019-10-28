@@ -1,7 +1,7 @@
 import random
 import pyrebase
 import collections
-import authentication as auth
+import authentication_h as auth
 
 # Choose what message will send
 def message():

@@ -47,6 +47,6 @@ while True:
             auth.API.send_direct_message(user, k)
             break
         else:
-            print(dispatch_time-now_time) # For testing purpose
-            times.sleep1(3)
+            # print(dispatch_time-now_time) # For testing purpose
+            times.sleep1(60)
 
