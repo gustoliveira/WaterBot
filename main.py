@@ -32,6 +32,7 @@ while True:
             for i in range(len(followers_list)):
                 try:
                     auth.API.send_direct_message(followers_list[i], message.message())
+                    times.sleep1(2)
                     # print('Sent to: ', auth.API.get_user(followers_list[i]).screen_name, message.message())
                 except tweepy.TweepError as TwitterError:
                     error = json.loads(TwitterError.response.text)
