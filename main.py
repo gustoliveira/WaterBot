@@ -4,17 +4,12 @@ import tweepy
 import message
 import datetime
 import authentication_h as auth
-# import authentication as auth # For testing purpose
 
+OwnerUser = auth.API.get_user(auth.user_ids['owner_twitter']).id
+auth.API.send_direct_message(OwnerUser, "It's running on heroku")
+print("It's running on heroku")
 
-first_time_flag = True
 while True:
-    if first_time_flag == True:
-        user = auth.API.get_user(auth.user_ids['owner_twitter']).id
-        auth.API.send_direct_message(user, "It's running on heroku")
-        print("It's running on heroku")
-        first_time_flag = False
-
     try:
         auth.API.get_user(auth.user_ids['owner_twitter']).id
     except tweepy.TweepError as TwitterError:
@@ -40,13 +35,13 @@ while True:
                     if int(error_code) == 226:
                         print(error['errors'][0]['message'])
                         times.sleep1(60*30)
+                    msg = 'Twitter error: ' + error['errors'][0]['message']
+                    auth.API.send_direct_message(OwnerUser, msg)
                 k += 1
-                print(k)
 
-            user = auth.API.get_user(auth.user_ids['owner_twitter']).id
-            auth.API.send_direct_message(user, k)
+            auth.API.send_direct_message(OwnerUser, k)
+            print("Sent to ", k, "users")
             break
         else:
-            # print(dispatch_time-now_time) # For testing purpose
             times.sleep1(60)
 
