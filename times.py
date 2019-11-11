@@ -24,7 +24,7 @@ def pause(now_time):
         return True
 
 def time_to_send():
-    delivery_time_ahead = datetime.now().astimezone(local_timezone) + timedelta(minutes=random.randrange(40, 50))
+    delivery_time_ahead = datetime.now().astimezone(local_timezone) + timedelta(minutes=random.randrange(50, 60))
     delivery_str = datetime.strftime(delivery_time_ahead, '%Y/%m/%d %H:%M')
     return datetime.strptime(delivery_str, '%Y/%m/%d %H:%M').astimezone(local_timezone)
     # return datetime.now().astimezone(local_timezone)+timedelta(seconds=10) # For testing purpose

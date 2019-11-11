@@ -7,7 +7,7 @@ import authentication_h as auth
 
 OwnerUser = auth.API.get_user(auth.user_ids['owner_twitter']).id
 auth.API.send_direct_message(OwnerUser, "It's running on heroku")
-print("It's running on heroku")
+# print("It's running on heroku")
 
 while True:
     try:
@@ -39,7 +39,7 @@ while True:
                     auth.API.send_direct_message(OwnerUser, msg)
                 k += 1
 
-            auth.API.send_direct_message(OwnerUser, k)
+            # auth.API.send_direct_message(OwnerUser, k)
             print("Sent to ", k, "users")
             break
         else:
