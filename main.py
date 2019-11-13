@@ -22,7 +22,17 @@ while True:
     k = 0
     while True:
         now_time = datetime.datetime.now().astimezone(times.local_timezone)
-        followers_list = auth.API.followers_ids("@BotDaAgua")
+        try:
+            followers_list = auth.API.followers_ids("@BotDaAgua")
+        except tweepy.TweepError as TwitterError:
+            error = json.loads(TwitterError.response.text)
+            error_code = 'Twitter error: ' + error['errors'][0]['code']
+            if int(error_code) == 226 or (error_code) == 88:
+                print(error['errors'][0]['message'])
+                times.sleep1(60*30)
+            msg = 'Twitter error: ' + error['errors'][0]['message']
+            auth.API.send_direct_message(OwnerUser, msg)
+            print(msg)
         if now_time >= dispatch_time and times.pause(now_time):
             for i in range(len(followers_list)):
                 try:
@@ -32,14 +42,14 @@ while True:
                 except tweepy.TweepError as TwitterError:
                     error = json.loads(TwitterError.response.text)
                     error_code = 'Twitter error: ' + error['errors'][0]['code']
-                    if int(error_code) == 226 and (error_code) == 88:
+                    if int(error_code) == 226 or int(error_code) == 88:
                         print(error['errors'][0]['message'])
                         times.sleep1(60*30)
                     msg = 'Twitter error: ' + error['errors'][0]['message']
+                    print(msg)
                     auth.API.send_direct_message(OwnerUser, msg)
                 k += 1
 
-            # auth.API.send_direct_message(OwnerUser, k)
             print("Sent to ", k, "users")
             break
         else:
