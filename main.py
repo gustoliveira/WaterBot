@@ -14,7 +14,7 @@ while True:
         auth.API.get_user(auth.user_ids['owner_twitter']).id
     except tweepy.TweepError as TwitterError:
         error = json.loads(TwitterError.response.text)
-        error_code = 'Twitter error: ' + error['errors'][0]['code']
+        error_code = error['errors'][0]['code']
         if int(error_code) == 226:
             times.sleep1(60*30)
 
@@ -26,7 +26,7 @@ while True:
             followers_list = auth.API.followers_ids("@BotDaAgua")
         except tweepy.TweepError as TwitterError:
             error = json.loads(TwitterError.response.text)
-            error_code = 'Twitter error: ' + error['errors'][0]['code']
+            error_code = error['errors'][0]['code']
             if int(error_code) == 226 or int(error_code) == 88:
                 print(error['errors'][0]['message'])
                 times.sleep1(60*30)
@@ -41,7 +41,7 @@ while True:
                     # print('Sent to: ', auth.API.get_user(followers_list[i]).screen_name, message.message())
                 except tweepy.TweepError as TwitterError:
                     error = json.loads(TwitterError.response.text)
-                    error_code = 'Twitter error: ' + error['errors'][0]['code']
+                    error_code = error['errors'][0]['code']
                     if int(error_code) == 226 or int(error_code) == 88:
                         print(error['errors'][0]['message'])
                         times.sleep1(60*30)
