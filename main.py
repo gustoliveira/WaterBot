@@ -32,7 +32,7 @@ while True:
                 except tweepy.TweepError as TwitterError:
                     error = json.loads(TwitterError.response.text)
                     error_code = 'Twitter error: ' + error['errors'][0]['code']
-                    if int(error_code) == 226:
+                    if int(error_code) == 226 and (error_code) == 88:
                         print(error['errors'][0]['message'])
                         times.sleep1(60*30)
                     msg = 'Twitter error: ' + error['errors'][0]['message']

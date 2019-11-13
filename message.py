@@ -12,20 +12,19 @@ def message():
 
 # Add in the database
 data = {
-    '15':'Melhor uma pedra no caminho do que uma no rim, então: beba água',
-    '16':'Beba água, vc vai me agradecer depois',
-    '17':'Coé, meno, já bebeu sua água hoje?',
-    '18':'Rosas são vermelhas, violetas são azuis, vai tomar água',
-    '19':'Aviso pra tomar água',
-    '20':'Olha a hora mano, é hora de tomar água',
-    '21':"Mein, pela sua saude, vai beber água",
-    '22':"Pelo amor de Deus, camarada, não aguento mais manda tu tomar agua!!!",
-    '23':"Ainn, tenho ranço de quem não está tomando água agr, então vai lá tomar pq não quero ter ranço de voce...",
-    '24':'Seu rim vai agradecer se tomar água agora',
-    '25':"Keep calm and vai tomar água, patrão",
-    '26':"Convenhamos, talvez já seja hora de tomar água, né...",
-    '27':"Não é querendo pressionar nem nada, mas voce está se hidratando corretamente? Se não, tome água, se sim, tome água também",
-    '28':"Voce tem certeza de que o que voce está fazendo agora é mais importante que se hidratar?"
+    '28':"Voce tem certeza de que o que voce está fazendo agora é mais importante que se hidratar?",
+    '29':"Voce sabia? Quem bebe água frequentemente tem 90% de chance de entrar na faculdade, e quem já entrou consegue sair ainda mais rápido desse inferno?",
+    '30':"Beba água pra chorar com tranquilidade quando tiver uma crise <3",
+    '31':"Beba água AGORA! Se não eu vou contar pra sua mãe",
+    '32':"Sai do celular seu preguiçoso e vai tomar uns golão de água",
+    '33':"Beba água, seja asseado, lave a louça, e durma cedo",
+    '34':"Fotos bebendo água>>>>>Nudes",
+    '35':"QUer dar orgulho a sua familia? Então drink água",
+    '36':"Cerveja? To fora, pego meu galão de água e dou fora",
+    '37':"'Beba água seu porra' EINSTEIN, Albert",
+    '38':"Só é corno quem não toma água, pronto falei",
+    '39':"Beber água é melhor do que beber semem, então beba água!",
+    '40':"Tive um pesadelo horroroso, sonhei que meus seguidores não tomam água direito, credo"
 }
 
 def main():
