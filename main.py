@@ -29,9 +29,9 @@ while True:
             error_code = error['errors'][0]['code']
             if int(error_code) == 226 or int(error_code) == 88:
                 print(error['errors'][0]['message'])
-                times.sleep1(60*30)
-            msg = 'Twitter error: ' + error['errors'][0]['message']
-            auth.API.send_direct_message(OwnerUser, msg)
+                sleeptime = 60*15
+                times.sleep1(sleeptime)
+            msg = 'FollowersUser_Twitter_Error: ' + error['errors'][0]['message']
             print(msg)
         if now_time >= dispatch_time and times.pause(now_time):
             for i in range(len(followers_list)):
@@ -44,10 +44,10 @@ while True:
                     error_code = error['errors'][0]['code']
                     if int(error_code) == 226 or int(error_code) == 88:
                         print(error['errors'][0]['message'])
-                        times.sleep1(60*30)
-                    msg = 'Twitter error: ' + error['errors'][0]['message']
+                        sleeptime = 60*15
+                        times.sleep1(sleeptime)
+                    msg = 'SendToUSer_Twitter_Error: ' + error['errors'][0]['message']
                     print(msg)
-                    auth.API.send_direct_message(OwnerUser, msg)
                 k += 1
 
             print("Sent to ", k, "users")
