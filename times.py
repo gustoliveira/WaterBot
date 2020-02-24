@@ -25,6 +25,5 @@ def is_paused(now_time):
 
 def time_to_send():
     delivery_time_ahead = datetime.now().astimezone(local_timezone) + timedelta(minutes=random.randrange(55, 60))
-    delivery_time_ahead = datetime.now().astimezone(local_timezone) + timedelta(seconds=30)
     delivery_str = datetime.strftime(delivery_time_ahead, '%Y/%m/%d %H:%M')
     return datetime.strptime(delivery_str, '%Y/%m/%d %H:%M').astimezone(local_timezone)

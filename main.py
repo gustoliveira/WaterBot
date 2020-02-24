@@ -7,25 +7,6 @@ import authentication as auth
 from datetime import datetime
 from time import sleep
 
-import os
-os.environ["apiKey"] = 'AIzaSyDRT0Bx9ro-IVv-w3xmMj7CaOqgZ1IM8jM'
-os.environ["authDomain"] = 'rememberbot-f5d7b.firebaseapp.com'
-os.environ["databaseURL"] = 'https://rememberbot-f5d7b.firebaseio.com'
-os.environ["projectId"] = 'rememberbot-f5d7b'
-os.environ["storageBucket"] = 'rememberbot-f5d7b.appspot.com'
-os.environ["messagingSenderId"] = '502104489587'
-os.environ["appId"] = '1:502104489587:web:bd9e8a851cb9baaa77b406'
-os.environ["measurementId"] = 'G-8Q89DBCG4T'
-
-os.environ['fb_email'] = "gustoliveira.projetos@gmail.com"
-os.environ['fb_password'] = "mamabuseta"
-os.environ['owner_twitter'] = "@gvst_oliveira"
-
-os.environ['CONSUMER_KEY'] = "JfbzuNBurIGSQBLqOrQ3lhGZJ"
-os.environ['CONSUMER_SECRET'] = "TSHFSmf9z6cf8Qhuujln88sg4MBgx3MGRX8EruSWnm2dhviMko"
-os.environ['ACCESS_KEY'] = "1159671170721046528-N4hn4QLKT5UENQhpMUhikZ83F3S6Ve"
-os.environ['ACCESS_SECRET'] = "6aAP7EeqNPVZSSNpnBCcDhKp91uVr1gvAUAGqYQdzdx6y"
-
 def error_message(message, text):
     print("Entrou em error_message função")
     error = json.loads(text)
