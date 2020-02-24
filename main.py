@@ -44,8 +44,8 @@ def main():
                 error_message('Followers_User Twitter Error: ',
                               TwitterError.response.text)
 
-            if now_time >= dispatch_time:
-                for i in range(len(followers_list)):
+         if now_time >= dispatch_time and (not times.is_paused(now_time)):
+            for i in range(len(followers_list)):
                     try:
                         auth.API.send_direct_message(followers_list[i], message.message())
                         sleep(2)
