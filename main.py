@@ -44,20 +44,19 @@ def main():
                 error_message('Followers_User Twitter Error: ',
                               TwitterError.response.text)
 
-         if now_time >= dispatch_time and (not times.is_paused(now_time)):
+        if now_time >= dispatch_time and not times.is_paused(now_time):
             for i in range(len(followers_list)):
-                    try:
-                        auth.API.send_direct_message(followers_list[i], message.message())
-                        sleep(2)
-                    except tweepy.TweepError as TwitterError:
-                        error_message('SendToUSer_Twitter_Error: ',
-                                      TwitterError.response.text)
+                try:
+                    auth.API.send_direct_message(followers_list[i], message.message())
+                    sleep(2)
+                except tweepy.TweepError as TwitterError:
+                    error_message('SendToUSer_Twitter_Error: ',
+                                    TwitterError.response.text)
 
-                    follower_index += 1
-                break
-            else:
-                sleep(60)
+                follower_index += 1
+            break
 
+        sleep(60*5)
 
 if __name__ == '__main__':
     main()
